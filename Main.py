@@ -8,7 +8,10 @@ import Strings
 import Utils
 import Inventory as inv
 import Player
+from colorama import init, Fore
 
+# colorama 초기화
+init()
 
 # player 객체 생성하기
 p = Player.player()
@@ -17,13 +20,13 @@ p = Player.player()
 def doWelcome():
     # 텍스트 출력하기
     
-    print(Strings.get("Welcome"))
-    p.setName(input("탐험가님의 이름은 무엇인가요?"))
+    print(Fore.GREEN+Strings.get("Welcome"))
+    p.setName(input(Fore.YELLOW+"탐험가님의 이름은 무엇인가요?"))
  
 # 장소: 출발점
 def doStart():
     # 텍스트 출력하기
-    print(Strings.get("Start",p.getName()))
+    print(Fore.GREEN+Strings.get("Start",p.getName()))
     # 플레이어가 선택할 수 있는 행동은?
     choices = [
         ["P", "바위 더미를 조사한다"],
@@ -53,12 +56,12 @@ def doBoulders():
     p.visitBoulder()
 
     if p.getBoulderVisits() == 1: #첫번째 방문
-        print(Strings.get("Boulders",p.getName()))
+        print(Fore.GREEN+Strings.get("Boulders",p.getName()))
     elif  p.getBoulderVisits() == 3: #세번째 방문
         # 열쇠를 인벤토리에 추가하기
         inv.takeStructureKey()
     else:
-        print(Strings.get("Boulders2",p.getName()))    
+        print(Fore.GREEN+Strings.get("Boulders2",p.getName()))    
 
     # 시작 위치로 돌아가기
     doStart()
@@ -66,7 +69,7 @@ def doBoulders():
 # 장소: 구조물
 def doStructure():
     # 텍스트 출력하기
-    print(Strings.get("Structure",p.getName()))
+    print(Fore.GREEN+Strings.get("Structure",p.getName()))
     # 플레이어가 선택할 수 있는 행동은?
     choices = [
         ["S", "시작 지점으로 돌아간다"],
@@ -89,11 +92,11 @@ def doStructure():
 # 장소: 구조물 입구
 def doStructureDoor():
     # 텍스트 출력하기
-    print(Strings.get("StructureDoor",p.getName()))
+    print(Fore.GREEN+Strings.get("StructureDoor",p.getName()))
     if inv.hasStructureKey():
-        print(Strings.get("StructureDoorKey",p.getName()))
+        print(Fore.GREEN+Strings.get("StructureDoorKey",p.getName()))
     else:
-        print(Strings.get("StructureDoorNoKey",p.getName()))
+        print(Fore.RED+Strings.get("StructureDoorNoKey",p.getName()))
     # 플레이어가 선택할 수 있는 행동은?
     choices = [
         ["S", "구조물로 돌아간다"],
@@ -124,7 +127,7 @@ def doEnterStructure():
 # 플레이어가 도망가기를 선택하기
 def doRun():
     # 텍스트 출력하기
-    print(Strings.get("Run",p.getName()))
+    print(Fore.RED+Strings.get("Run",p.getName()))
 
     p.died()
 
@@ -136,7 +139,8 @@ def doRun():
 
 # 게임 끝내기
 def gameOver():
-    print(Strings.get("GameOver",p.getName()))
+    print(Fore.GREEN+Strings.get("GameOver",p.getName()))
+    Fore.WHITE
  
 # 실제 게임 시작은 이곳에서
 

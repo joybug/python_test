@@ -2,6 +2,7 @@
 # Utils.py
 # 유틸리티 함수
 ############################################
+from colorama import Fore
 
 # getUserChoice()
 # 선택지 리스트와 선택 프롬프트를 출력하고 사용자 선택을 반환합니다.
@@ -16,9 +17,9 @@ def getUserChoice(options):
         # 유효한 입력 목록에 선택 가능한 문자 추가하기 
         validInputs += opt[0]
         # 출력하기
-        print(opt[0], "-", opt[1])
+        print(Fore.YELLOW+opt[0], "-", opt[1])
     # 프롬프트 만들기
-    prompt = "무엇을 하고 싶으세요? [" + validInputs + "]: "
+    prompt = Fore.GREEN+"무엇을 하고 싶으세요? [" + validInputs + "]: "
     # 변수 초기화하기
     choice = ""
     done = False
