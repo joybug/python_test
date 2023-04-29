@@ -37,3 +37,48 @@ def getUserChoice(options):
             done = True
     # 선택한 옵션 반환하기
     return choice
+
+
+
+# inputNumber()
+# 숫자 입력 함수
+def inputNumber(prompt):
+    # 입력 변수
+    inp = ""
+    # 변수가 숫자일 때까지 반복하기
+    while not inp.isnumeric():
+        # 입력 프롬프트
+        inp = input(prompt).strip()
+    # 숫자 반환하기
+    return int(inp)
+
+# inputYesNo()
+# 사용자가 "Y"를 고르면 True, "N"를 고르면 False 
+def inputYesNo(text):
+    # 루프
+    while True:
+        # 프롬프트 출력하기
+        x = input(text + " [Y/N]").upper()
+        # 응답 확인하기
+        if x in ["Y", "YES"]:
+            return True
+        elif x in ["N", "NO"]:
+            return False
+
+# 아이템 얻기
+# getUserChoice()에서 사용하는 형식으로 반환하기
+def getItems():
+    # 결과 저장 변수
+    result = []
+    # 아이템 루프
+    for item in items:
+        # 빈 리스트 만들기
+        i = []
+        # 이름(키) 추가하기
+        i.append(item["key"])
+        # description + cost 추가하기
+        i.append(item["description"] + " (" + str(item["cost"]) + ")")
+        # 이 아이템을 결과에 추가하기
+        result.append(i)
+    # 결과 반환하기
+    return result
