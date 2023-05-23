@@ -26,12 +26,12 @@ while Loop:
     #y = random.randint(400,450)
     if count == 100:
         #현재위치
-        #x = pag.position().x
-        #y = pag.position().y
-        coord = get_random_coords()
-        x = coord[0]
-        y = coord[1]
-        pag.moveTo(x,y,0.2)
+        x = pag.position().x
+        y = pag.position().y
+        # coord = get_random_coords()        
+        # x = coord[0]
+        # y = coord[1]
+        # pag.moveTo(x,y,0.2)
 
         #다이아몬드 
         x -= 30
