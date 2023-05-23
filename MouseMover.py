@@ -3,6 +3,8 @@ import random
 import time
 import keyboard
 
+global PAUSE
+PAUSE = False #ctrl+alt+p
 Loop = True
 count = 0
 pag.FAILSAFE = False
@@ -17,7 +19,21 @@ def get_random_coords():
         random.randint(100,height-200)
     ]
 
+def press_pause():
+    global PAUSE
+    PAUSE = not PAUSE
+
+keyboard.add_hotkey('ctrl+alt+p', press_pause)
+
 while Loop:
+
+    if keyboard.is_pressed('esc') :
+        print('End mouse move!!')
+        Loop = False
+
+    if PAUSE == True:
+        #print("Pause 실행중...")
+        continue
 
     time.sleep(0.1)
     count +=1
@@ -54,8 +70,5 @@ while Loop:
     
         count = 0
     
-    if keyboard.is_pressed('esc') :
-        print('End mouse move!!')
-        Loop = False
 
     
